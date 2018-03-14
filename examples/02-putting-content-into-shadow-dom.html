@@ -8,7 +8,7 @@
           content="ie=edge">
     <link rel="stylesheet"
           href="styles.css">
-    <title>01 - Creating Shadow Dom</title>
+    <title>02 - Putting Content Into Shadow DOM</title>
 </head>
 
 <body>
@@ -18,14 +18,19 @@
 
     <!-- The element to which we'll attach the Shadow DOM -->
     <div class="element">
-        Hello World!
+        <h1>Hello World!</h1>
     </div>
 
     <script>
         // When init() is commented, you'll see the .element div with 'Hello World!'
         // But once you run init, it attaches Shadow DOM to .element and only stuff
         // from within the shadow is rendered on page.
-        // init();
+        init();
+
+        // You'll also see that the <h1> inside shdow DOM has the margins
+        // but the Hello World! <h1> didn't have it. 👀
+
+        // We are going to later see how styles work in the shadows.
 
         function init() {
             // The element

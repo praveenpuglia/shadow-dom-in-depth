@@ -22,3 +22,17 @@ body {
 }
 
 /*=====  End of Layout  ======*/
+
+ 
+ /*=============================================
+ =            Example Specific Styles            =
+ =============================================*/
+ 
+ .element {
+   padding: 1rem;
+   border: 1px dashed;
+ }
+ 
+ /*=====  End of Example Specific Styles  ======*/
+ 
+ 
