@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <link rel="stylesheet"
+          href="styles.css">
+    <title>01 - Creating Shadow Dom</title>
+</head>
+
+<body>
+    <h1>Open DevTools 🔨</h1>
+    <h2>Check the code for instructions</h2>
+
+
+    <!-- The element to which we'll attach the Shadow DOM -->
+    <div class="element"></div>
+
+    <script>
+        // First! Uncomment this!
+        init();
+
+        function init() {
+            // The element
+            let el = document.querySelector('.element');
+
+            // Attaching Shadow DOM to the element
+            el.attachShadow({ mode: 'open' });
+
+            // At this point, open Devtools, inspect the element
+            // and expand the element.
+
+            // You'll see the shadow root as in Elements panel as... 
+            // <div class="element">
+            //   #shadow-root (open)
+            // </div>
+
+            // Now, head over to the console.
+            console.log("Hello! I am the Element - `el` :", el);
+            console.log("Hello! I am the Shadow Root - `el.shadowRoot` :", el.shadowRoot);
+            console.log("Hello! I am the Element, again! - `el.shadowRoot.host` :", el.shadowRoot.host);
+        }
+    </script>
+</body>
+
+</html>
