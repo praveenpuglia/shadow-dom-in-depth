@@ -2,11 +2,16 @@
 
 > Heads Up! It's all about the V1 Spec.
 
+This document is more yours than it is mine. It makes me happy that it has been able to help people. To do better I moved this document from [the original gist](https://gist.github.com/praveenpuglia/0832da687ed5a5d7a0907046c9ef1813) to this repo so multiple people can work together and improve it.
+
+If you like what you find here, please create issues with ideas as to what more can we add to this repository. Like examples, images, graphical representations for the terminologies etc via issues. Let's make everyone love the platform :)
+
 ## What's New?
 
 * Examples. I am putting examples that'll help everyone understand it better, step by step. [Check them out.](./examples)
 
 Let me know if a "Everything you need to know about Custom Elements" document like this one would help you. If so, I'll put one up 👨‍💻.
+
 
 ## Browser Support
 
