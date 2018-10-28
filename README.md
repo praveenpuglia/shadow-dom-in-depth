@@ -16,7 +16,7 @@ Let me know if a "Everything you need to know about Custom Elements" document li
 ## Browser Support
 
 * Chrome : Works
-* Firefox : In development & behind feature flag.
+* Firefox : Works
 * Opera : Works
 * Safari : Works but few things are buggy.
 * Edge : Under Consideration.
