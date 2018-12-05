@@ -8,6 +8,9 @@ If you like what you find here, please create issues with ideas as to what more 
 
 ## What's New?
 
+### Translations
+Chinese - https://github.com/Tencent/omi/blob/master/tutorial/shadow-dom-in-depth.cn.md - Thanks [@eyea](https://github.com/eyea).
+
 * Examples. I am putting examples that'll help everyone understand it better, step by step. [Check them out.](./examples)
 
 Let me know if a "Everything you need to know about Custom Elements" document like this one would help you. If so, I'll put one up 👨‍💻.
