@@ -4,7 +4,7 @@
 
 This document is more yours than it is mine. It makes me happy that it has been able to help people. To do better I moved this document from [the original gist](https://gist.github.com/praveenpuglia/0832da687ed5a5d7a0907046c9ef1813) to this repo so multiple people can work together and improve it.
 
-If you like what you find here, please create issues with ideas as to what more can we add to this repository. Like examples, images, graphical representations for the terminologies etc via issues. Let's make everyone love the platform :)
+If you like what you find here, please create issues with ideas as to what more can we add to this repository. Like examples, images, graphical representations for the terminologies etc via issues. Let's make everyone love the platform :).
 
 ## What's New?
 
@@ -15,7 +15,6 @@ Chinese - https://github.com/Tencent/omi/blob/master/tutorial/shadow-dom-in-dept
 
 Let me know if a "Everything you need to know about Custom Elements" document like this one would help you. If so, I'll put one up 👨‍💻.
 
-
 ## Browser Support
 
 * Chrome : Works
@@ -24,7 +23,7 @@ Let me know if a "Everything you need to know about Custom Elements" document li
 * Safari : Works but few things are buggy.
 * Edge : Under Consideration.
 
-Comprehensive browser support info here - https://caniuse.com/#feat=shadowdomv1.
+Comprehensive browser support info can be found here: https://caniuse.com/#feat=shadowdomv1.
 
 ## Introduction
 
@@ -32,7 +31,7 @@ In a nutshell, Shadow DOM enables local scoping for HTML & CSS.
 
 > Shadow DOM fixes CSS and DOM. It introduces scoped styles to the web platform. Without tools or naming conventions, you can bundle CSS with markup, hide implementation details, and author self-contained components in vanilla JavaScript. - https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom
 
-It's like it's own little world which hardly affects or gets affected by the outside world.
+It's like its own little world which hardly affects or gets affected by the outside world.
 
 It's what you write as a **component author** to abstract away the implementation details of your component. It can also decide what to do with the user-provided **light DOM**.
 
@@ -46,7 +45,7 @@ We need to do that to make the machines understand our documents better. This tr
 
 **- Component User :** Well, they use components built by authors. They can pass in light DOM and set attributes and properties on your component. They can even extend the internals of a component if they want. Example - We the user who use the `input` element.
 
-**- Shadow Root:** It's what gets attached to an element to give that element it's shadow DOM. Technically it's a non-element node, a special kind of _Document Fragment_.
+**- Shadow Root:** It's what gets attached to an element to give that element its shadow DOM. Technically it's a non-element node, a special kind of [_DocumentFragment_](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment).
 
 ```html
 <custom-picture>
@@ -59,9 +58,9 @@ We need to do that to make the machines understand our documents better. This tr
 </custom-picture>
 ```
 
-Throughout the document, I have put shadow root inside those weird ASCII boundaries. This will put more emphasis on thinking how they are actually document fragments and they have a wall around them.
+Throughout the document, I have put shadow root inside those weird ASCII boundaries. This will put more emphasis on thinking how they are actually document fragments that have a wall around them.
 
-**- Shadow Host:** The element to which the shadow root gets attached. A host can access it's shadow root via a property on itself. `.shadowRoot`.
+**- Shadow Host:** The element to which the shadow root gets attached. A host can access its shadow root via a property on itself: `.shadowRoot`.
 
 **- Shadow Tree :** All the elements that go into the Shadow Root, which is scoped from outside world, is called Shadow Tree.
 
@@ -118,19 +117,19 @@ Yes! But here are the differences from MDN.
 
 ### What happens if we use an `input` element instead of the div to attach the shadow DOM?
 
-Well, it doesn't work. Because the browser already hosts it's own shadow DOM for those elements. Bunch of red colored english alphabets will be thrown at console's face. 😰
+Well, it doesn't work. Because the browser already hosts its own shadow DOM for those elements. Bunch of red colored english alphabets will be thrown at console's face. 😰
 
 ## Notes & Tips
 
-* Shadow DOM, cannot be removed once created. It can only be replaced with a new one.
-* If you are creating a custom element, you should be creating the shadowRoot in it's constructor. It can also be probably called in `connectedCallback()` but I am not sure if that introduces performance problems or any other problems. 🤷‍♂️
+* Shadow DOM cannot be removed once created; it can only be replaced with a new one.
+* If you are creating a custom element, you should be creating the shadowRoot in its constructor. It can also be probably called in `connectedCallback()` but I am not sure if that introduces performance problems or any other problems. 🤷‍♂️
 * To see how browsers implement shadow DOM for elements like `input` or `textarea`, Go to `DevTools > Settings > Elements > [x] Show user agent shadow DOM`.
 
 ## Shadow DOM Modes
 
 ### Open
 
-You saw the `{mode: "open"}` in the `attachShadow()` method right? Yeah! That's it. What open mode does is that it provides a way for us to access the shadow DOM of an element in JS via the element. It also lets us access the host element from within the shadow DOM.
+You saw the `{mode: "open"}` in the `attachShadow()` method right? Yeah! That's it. What open mode does is that it provides a way for us to reach into the shadow DOM to access the element's contents. It also lets us access the host element from within the shadow DOM.
 
 This is done by the two implicit properties created when we call `attachShadow()` in `open` mode.
 
@@ -157,7 +156,7 @@ el.shadowRoot; // null
 
 Almost always use `open` mode shadow DOMs because they make it possible for both the component author and user to change things how they want.
 
-Remember we did `el.shadowRoot` stuff up there? Yeah! That won't work with `closed` mode. The element doesn't get any reference to it's shadow DOM. This is especially a problem when creating custom elements and want to access the shadow DOM for manipulation.
+Remember we did `el.shadowRoot` stuff up there? Yeah! That won't work with `closed` mode. The element doesn't get any reference to its shadow DOM, which is a problem when you want to access the shadow DOM for manipulation.
 
 ```js
 class CustomPicture extends HTMLElement {
@@ -211,13 +210,13 @@ Yeeeeaaaah.. but not in all browsers. 😕
 
 ### Does it get affected by global CSS?
 
-Yeah. In some ways. Only the properties that are inherited will make their way through the shadow DOM boundary. Example -
+Yeah. In some ways. Only the properties that are inherited will make their way through the shadow DOM boundary. Examples:
 
 * color
 * background
 * font-family etc.
 
-The `*` selector also affects things because `*` means all elements and that includes the element to which you are attaching the shadow root too, the host element. Things which get applied to the host and can be inheried, will pass the shadow DOM boundary to apply to inner elements.
+The `*` selector also affects things because `*` means all elements and that includes the element to which you are attaching the shadow root to (the host element). Things which get applied to the host and can be inherited will pass the shadow DOM boundary to apply to inner elements.
 
 ## Styles Terminologies
 
@@ -237,7 +236,7 @@ custom-picture {
     </style>
 ```
 
-* :host(`<selector>`): Does the component **host** match the **selector** ? Basically to target different states of the same host. Examples
+* :host(`<selector>`): Does the component **host** match the **selector** ? Basically, allows us to target different states of the same host. Examples:
 
 ```css
 :host([disabled]) {
@@ -253,7 +252,7 @@ custom-picture {
 }
 ```
 
-* :host-context(`<selector>`): Is the **host** a descendant of **selector** ? Lets us change component's styles based on how the parent looks like. General application could be in theming.
+* :host-context(`<selector>`): Is the **host** a descendant of **selector** ? Lets us change a component's styles based on how the parent looks. General application could be in theming. Examples:
 
 ```css
 :host-context(.light-theme) {
@@ -291,7 +290,7 @@ From the spec...
 
 ### Which styles to put in shadow DOM ?
 
-The purpose of having styles inside a shadow DOM is to just have default styles and provide hooks via CSS custom properties so component users can make changes to those default styles via, CSS custom properties (a.k.a CSS variables)
+The purpose of having styles inside a shadow DOM is to just have default styles and provide hooks via CSS custom properties so component users can make changes to those default styles via, [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) (a.k.a CSS variables).
 
 ```html
 <business-card>
@@ -322,11 +321,11 @@ business-card {
 
 ## Events in Shadow DOM.
 
-Events work towards maintaining the encapsulation provided by the shadow DOM. Essentially, if an event occurs somewhere in shadow DOM, to outside world it'll look as if that event has triggered from the host element itself and not a secific part of the shadow DOM. This is called re-targeting of the event.
+Events work towards maintaining the encapsulation provided by the shadow DOM. Essentially, if an event occurs somewhere in the shadow DOM, to outside world it'll look as if that event has triggered from the host element itself and not a secific part of the shadow DOM. This is called **re-targeting of the event**.
 
-Inside the shadow DOM however the events aren't retargered and we can find out which specific element was an event associated with.
+Inside the shadow DOM, however, the events aren't retargeted and we can find out which specific element an event was associated with.
 
-So say if our flattened DOM tree looks like this..
+Say our flattened DOM tree looks like this:
 
 ```html
 <body>
@@ -345,7 +344,7 @@ On click of the button, to body, or anywhere outside custom-picture, the `event.
 
 Inside `<custom-picture>` however, the event target will be the button which was really clicked.
 
-Most events go out of shadow DOM boundary and when they do, they get re-targered. Some events aren't allowed to pass that boundary. Precisely these...
+Most events bubble out of the shadow DOM boundary, and when they do they get re-targered. Some events aren't allowed to pass that boundary. Precisely these:
 
 * abort
 * error
@@ -365,9 +364,9 @@ Slots are a pretty big thing in Shadow DOM.
 
 When creating custom components, we want to be able to provide only the necessary markup that goes into a particular component and use/group/style that as we want to as component authors.
 
-The DOM that a component user provides is called light DOM and slots are the way we can arrange that markup however we want. Style based on differnt situations and group them.
+The DOM that a component user provides is called light DOM and slots are the way we arrange, style, and group those elements.
 
-There are two aspects of a slot.
+There are two aspects of a slot:
 
 * **Light DOM Elements :** They say which slot they wanna go into.
 
@@ -396,14 +395,14 @@ There are two aspects of a slot.
 
 ### What if I don't provide the `slot` attribute in the `<img>` in `<custom-picture>` ?
 
-You'll see nothing rendered. Here's why.
+You'll see nothing rendered. Here's why:
 
-1.  A host element that has shadow DOM, only renders stuff that goes inside it's shadow DOM.
+1.  A host element that has shadow DOM, only renders stuff that goes inside its shadow DOM.
 2.  In order to get light DOM elements rendered, they need to be part of the shadow DOM.
 3.  The way we make them part of the shadow DOM is by putting them in slots.
 4.  In our example above, there's no element in light DOM that wants to go into a slot named `profile-picture`.
 5.  Since there's no one, the `<img>` from light DOM is not rendered.
-6.  Takeaway - Named slots accomodate only those light DOM elements which specify they wanna go into that particular slot.
+6.  Takeaway: named slots accommodate only those light DOM elements which specify they want to go into that particular slot.
 
 ### What if I want to render all elements that don't say where they should go ?
 
@@ -427,8 +426,7 @@ Example -
 ### What if I add two unnamed slots?
 
 Woah! 😲
-Actually, we can have multiple unnamed slots or even named slots but they are essentially useless.
-The light DOM elements will go into the first slots they match. So in the case above...
+Actually, we can have duplicate unnamed or named slots but they are essentially ignored, since light DOM elements will go into the first slot they match.
 
 ```html
 <custom-picture>
@@ -446,14 +444,14 @@ The light DOM elements will go into the first slots they match. So in the case a
 </custom-picture>
 ```
 
-### What if there's a slot but no light DOM elements wants to go there?
+### What if there's a slot but no light DOM elements want to go there?
 
-Nothing will be rendered, unless there's a fallback content the slot itself provides and how to do that?
+Nothing will be rendered unless there's fallback content provided by the slot itself. Providing fallback content is easy:
 
 ```html
 #shadow-root
     <slot name="nobody-comes-here">
-        <h1> I'll show up when noone does!</h1>
+        <h1> I'll show up when no slot content is provided!</h1>
     </slot>
 
     <style>
@@ -468,7 +466,7 @@ Nothing will be rendered, unless there's a fallback content the slot itself prov
 
 Light DOM elements that go into a slot are called slotted elements. As mentioned above, these are also called distributed elements which cross the shadow DOM boundary.
 
-These slotted elements can be styled using the `::slotted()` functional pseudo element. The syntax is as follows.
+These slotted elements can be styled using the `::slotted()` functional pseudo element. The syntax is as follows:
 
 ```css
 ::slotted(<compound-selector >) {
@@ -476,7 +474,7 @@ These slotted elements can be styled using the `::slotted()` functional pseudo e
 }
 ```
 
-Example -
+Example:
 
 ```html
 <custom-picture>
@@ -499,13 +497,13 @@ Example -
 </custom-picture>
 ```
 
-Here's how the spec formally defines it.
+Here's how the spec formally defines it:
 
 > The ::slotted() pseudo-element represents the elements assigned, after flattening, to a slot. This pseudo-element only exists on slots.
 
 Flattened trees are [here](https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom#lightdom).
 
-Important thing to remember is that only direct children of the host element can be assigned to a slot. For example
+An important thing to remember is that only direct children of the host element can be assigned to a slot. For example:
 
 ```html
 <custom-picture>
@@ -516,7 +514,7 @@ Important thing to remember is that only direct children of the host element can
 </custom-picture>
 ```
 
-I, however, don't know why that's not possible and what are the reasons behind it. So I created [this bug](https://github.com/w3c/csswg-drafts/issues/1530);
+I, however, don't know why that's not possible and what the reasons are behind it, so I created [this bug](https://github.com/w3c/csswg-drafts/issues/1530).
 
 ### How can I pass a light DOM element multiple levels down?
 
@@ -529,7 +527,7 @@ It may sound like we don't need to think about this scenario but it's often requ
 </parent-element>
 ```
 
-Here's what our custom elements look like.
+Here's what our custom elements look like:
 
 ```js
 class ParentElement extends HTMLElement {
