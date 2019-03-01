@@ -4,7 +4,7 @@
 
 This document is more yours than it is mine. It makes me happy that it has been able to help people. To do better I moved this document from [the original gist](https://gist.github.com/praveenpuglia/0832da687ed5a5d7a0907046c9ef1813) to this repo so multiple people can work together and improve it.
 
-If you like what you find here, please create issues with ideas as to what more can we add to this repository. Like examples, images, graphical representations for the terminologies etc via issues. Let's make everyone love the platform :).
+If you like what you find here, please create issues with ideas as to what more can we add to this repository. Like examples, images, graphical representations for the terminologies, etc. via issues. Let's make everyone love the platform :).
 
 ## What's New?
 
@@ -37,13 +37,13 @@ It's what you write as a **component author** to abstract away the implementatio
 
 ## Terminologies
 
-**- DOM :** What we get over the wire (or wireless :|) is a string of text. To render something on the screen, the browsers have to parse that string of text and convert it into a data model so it can understand things better. It also preserves the hierarchy from the original string by creating putting those parsed objects in a tree structure.
+**- DOM :** What we get over the wire (or wireless :|) is a string of text. To render something on the screen, the browsers have to parse that string of text and convert it into a data model so it can understand things better. It also preserves the hierarchy from the original string by putting those parsed objects in a tree structure.
 
 We need to do that to make the machines understand our documents better. This tree like data model of our document is called Document Object Model.
 
 **- Component Author :** The person who creates a component and defines how it works. Generally the person who writes a lot of shadow DOM code. Example - Browser vendors create the `input` element.
 
-**- Component User :** Well, they use components built by authors. They can pass in light DOM and set attributes and properties on your component. They can even extend the internals of a component if they want. Example - We the user who use the `input` element.
+**- Component User :** Well, they use components built by authors. They can pass in light DOM and set attributes and properties on your component. They can even extend the internals of a component if they want. Example - we, the users who use the `input` element.
 
 **- Shadow Root:** It's what gets attached to an element to give that element its shadow DOM. Technically it's a non-element node, a special kind of [_DocumentFragment_](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment).
 
@@ -83,7 +83,7 @@ Throughout the document, I have put shadow root inside those weird ASCII boundar
 
 **- DocumentFragment:**
 
-> The DocumentFragment interface represents a minimal document object that has no parent. It is used as a light-weight version of Document to store a segment of a document structure comprised of nodes just like a standard document. The key difference is that because the document fragment isn't part of the actual DOM's structure, changes made to the fragment don't affect the document, cause reflow, or incur any performance impact that can occur when changes are made. - [MDN](https://developer.mozilla.org/en/docs/Web/API/DocumentFragment)
+> The DocumentFragment interface represents a minimal document object that has no parent. It is used as a lightweight version of Document to store a segment of a document structure comprised of nodes just like a standard document. The key difference is that because the document fragment isn't part of the actual DOM's structure, changes made to the fragment don't affect the document, cause reflow, or incur any performance impact that can occur when changes are made. - [MDN](https://developer.mozilla.org/en/docs/Web/API/DocumentFragment)
 
 ## How to create Shadow DOM?
 
@@ -98,7 +98,7 @@ el.attachShadow({ mode: 'open' });
 el.shadowRoot; // the shadow root.
 el.shadowRoot.host; // the element itself.
 
-// put something in shadow DOM
+// Put something in shadow DOM
 el.shadowRoot.innerHTML = 'Hi I am shadowed!';
 
 // Like any other normal DOM operation.
@@ -161,7 +161,7 @@ Remember we did `el.shadowRoot` stuff up there? Yeah! That won't work with `clos
 ```js
 class CustomPicture extends HTMLElement {
   constructor() {
-    this.attachShadow({ mode: 'open' }); // this.shadowRoot exists. add or remove stuff in there using this ref.
+    this.attachShadow({ mode: 'open' }); // this.shadowRoot exists. Add or remove stuff in there using this ref.
     this.attachShadow({ mode: 'closed' }); // this.shadowRoot returns null. Bummer!
   }
 }
@@ -214,7 +214,7 @@ Yeah. In some ways. Only the properties that are inherited will make their way t
 
 * color
 * background
-* font-family etc.
+* font-family, etc.
 
 The `*` selector also affects things because `*` means all elements and that includes the element to which you are attaching the shadow root to (the host element). Things which get applied to the host and can be inherited will pass the shadow DOM boundary to apply to inner elements.
 
@@ -252,7 +252,7 @@ custom-picture {
 }
 ```
 
-* :host-context(`<selector>`): Is the **host** a descendant of **selector** ? Lets us change a component's styles based on how the parent looks. General application could be in theming. Examples:
+* :host-context(`<selector>`): Is the **host** a descendant of **selector** ? Let us change a component's styles based on how the parent looks. General application could be in theming. Examples:
 
 ```css
 :host-context(.light-theme) {
@@ -302,12 +302,12 @@ The purpose of having styles inside a shadow DOM is to just have default styles 
 ```
 
 ```css
-/*inside shadow DOM*/
+/*Inside shadow DOM*/
 .card-title {
   color: var(--card-title-color, #000);
 }
 
-/* Component users can then override this color as*/
+/*Component users can then override this color as*/
 business-card {
   --card-title-color: magenta;
 }
@@ -319,9 +319,9 @@ business-card {
 * To work around that problem, the shadow host is treated as replacing the shadow root node.
 * When considered within its own shadow trees, the shadow host is featureless. Only the `:host`, `:host()`, and `:host-context()` pseudo classes are allowed to match it.
 
-## Events in Shadow DOM.
+## Events in Shadow DOM
 
-Events work towards maintaining the encapsulation provided by the shadow DOM. Essentially, if an event occurs somewhere in the shadow DOM, to outside world it'll look as if that event has triggered from the host element itself and not a secific part of the shadow DOM. This is called **re-targeting of the event**.
+Events work towards maintaining the encapsulation provided by the shadow DOM. Essentially, if an event occurs somewhere in the shadow DOM, to outside world it'll look as if that event has triggered from the host element itself and not a specific part of the shadow DOM. This is called **re-targeting of the event**.
 
 Inside the shadow DOM, however, the events aren't retargeted and we can find out which specific element an event was associated with.
 
@@ -393,7 +393,7 @@ There are two aspects of a slot:
 
 > Elements are allowed to "cross" the shadow DOM boundary when a <slot> invites them in. These elements are called distributed nodes. Conceptually, distributed nodes can seem a bit bizarre. Slots don't physically move DOM; they render it at another location inside the shadow DOM. - https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom#slots
 
-### What if I don't provide the `slot` attribute in the `<img>` in `<custom-picture>` ?
+### What if I don't provide the `slot` attribute in the `<img>` in `<custom-picture>`?
 
 You'll see nothing rendered. Here's why:
 
@@ -404,7 +404,7 @@ You'll see nothing rendered. Here's why:
 5.  Since there's no one, the `<img>` from light DOM is not rendered.
 6.  Takeaway: named slots accommodate only those light DOM elements which specify they want to go into that particular slot.
 
-### What if I want to render all elements that don't say where they should go ?
+### What if I want to render all elements that don't say where they should go?
 
 This will require us to have a general purpose slot in our shadow DOM. A slot without a name.
 Example -
@@ -455,8 +455,8 @@ Nothing will be rendered unless there's fallback content provided by the slot it
     </slot>
 
     <style>
-        /* And that fallback can be styled from within the shadow DOM just like we do styles*/
-        slot[name="nobody-comes-here"] h1{
+        /*And that fallback can be styled from within the shadow DOM just like we do styles*/
+        slot[name="nobody-comes-here"] h1 {
             color: #bada55;
         }
     </style>
