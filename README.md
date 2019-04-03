@@ -391,7 +391,7 @@ There are two aspects of a slot:
 
 ### A very important note about how light DOM and slots play together.
 
-> Elements are allowed to "cross" the shadow DOM boundary when a <slot> invites them in. These elements are called distributed nodes. Conceptually, distributed nodes can seem a bit bizarre. Slots don't physically move DOM; they render it at another location inside the shadow DOM. - https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom#slots
+> Elements are allowed to "cross" the shadow DOM boundary when a &lt;slot&gt; invites them in. These elements are called distributed nodes. Conceptually, distributed nodes can seem a bit bizarre. Slots don't physically move DOM; they render it at another location inside the shadow DOM. - https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom#slots
 
 ### What if I don't provide the `slot` attribute in the `<img>` in `<custom-picture>`?
 
@@ -522,7 +522,7 @@ It may sound like we don't need to think about this scenario but it's often requ
 
 ```html
 <parent-element>
-    <!--parent-element uses child-element in it's shadow DOM and we want this span to render inside that child-element's shadow DOM-->
+    <!--parent-element uses child-element in its shadow DOM and we want this span to render inside that child-element's shadow DOM-->
     <span slot="parent-slot">Finally</span>
 </parent-element>
 ```
