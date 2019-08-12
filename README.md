@@ -29,7 +29,7 @@ Comprehensive browser support info can be found here: https://caniuse.com/#feat=
 
 In a nutshell, Shadow DOM enables local scoping for HTML & CSS.
 
-> Shadow DOM fixes CSS and DOM. It introduces scoped styles to the web platform. Without tools or naming conventions, you can bundle CSS with markup, hide implementation details, and author self-contained components in vanilla JavaScript. - https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom
+> Shadow DOM fixes CSS and DOM. It introduces scoped styles to the web platform. Without tools or naming conventions, you can bundle CSS with markup, hide implementation details, and author self-contained components in vanilla JavaScript. - https://developers.google.com/web/fundamentals/web-components/shadowdom
 
 It's like its own little world which hardly affects or gets affected by the outside world.
 
@@ -360,7 +360,7 @@ Most events bubble out of the shadow DOM boundary, and when they do they get re-
 
 Slots are a pretty big thing in Shadow DOM.
 
-> Slots are placeholders inside your component that users can fill with their own markup. - https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom#slots
+> Slots are placeholders inside your component that users can fill with their own markup. - https://developers.google.com/web/fundamentals/web-components/shadowdom#slots
 
 When creating custom components, we want to be able to provide only the necessary markup that goes into a particular component and use/group/style that as we want to as component authors.
 
@@ -391,7 +391,7 @@ There are two aspects of a slot:
 
 ### A very important note about how light DOM and slots play together.
 
-> Elements are allowed to "cross" the shadow DOM boundary when a &lt;slot&gt; invites them in. These elements are called distributed nodes. Conceptually, distributed nodes can seem a bit bizarre. Slots don't physically move DOM; they render it at another location inside the shadow DOM. - https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom#slots
+> Elements are allowed to "cross" the shadow DOM boundary when a &lt;slot&gt; invites them in. These elements are called distributed nodes. Conceptually, distributed nodes can seem a bit bizarre. Slots don't physically move DOM; they render it at another location inside the shadow DOM. - https://developers.google.com/web/fundamentals/web-components/shadowdom#slots
 
 ### What if I don't provide the `slot` attribute in the `<img>` in `<custom-picture>`?
 
@@ -501,7 +501,7 @@ Here's how the spec formally defines it:
 
 > The ::slotted() pseudo-element represents the elements assigned, after flattening, to a slot. This pseudo-element only exists on slots.
 
-Flattened trees are [here](https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom#lightdom).
+Flattened trees are [here](https://developers.google.com/web/fundamentals/web-components/shadowdom#lightdom).
 
 An important thing to remember is that only direct children of the host element can be assigned to a slot. For example:
 
@@ -567,7 +567,7 @@ window.customElements.define('child-element', ChildElement);
 ## Resources
 
 * http://robdodson.me/shadow-dom-css-cheat-sheet/
-* https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom
+* https://developers.google.com/web/fundamentals/web-components/shadowdom
 * https://drafts.csswg.org/css-scoping/
 
 ## More Queries & Bugs
