@@ -252,29 +252,10 @@ custom-picture {
 }
 ```
 
-* :host-context(`<selector>`): Is the **host** a descendant of **selector** ? Let us change a component's styles based on how the parent looks. General application could be in theming. Examples:
+### A note about :host()
 
-```css
-:host-context(.light-theme) {
-  background: lightgray;
-}
-
-:host-context(.dark-theme) {
-  background: darkgray;
-}
-
-/*You can also do...*/
-:host-context(.aqua-theme) > * {
-  color: aqua; /* lame */
-}
-```
-
-### A note about :host() and :host-context()
-
-Both of these functional pseudo classes can only take `<compound-selector>` but not a combinator like space or ">" or "+" etc.
-In case of `:host()` that means you can only choose the attributes and other aspects of the host element.
-
-In case of `:host-context()` that means you can choose the attributes and other aspects of one particular element which is an ancestor of the `:host`. Only one!
+The `:host()` functional pseudo class can only take `<compound-selector>` but not a combinator like space or ">" or "+" etc.
+That means you can only choose the attributes and other aspects of the host element.
 
 ### Do the modes in `attachShadow()` affect how styles get applied/cascaded?
 
@@ -317,7 +298,7 @@ business-card {
 
 * A shadow host is outside of the shadow tree it hosts, and so would ordinarily be untargettable by any selectors evaluated in the context of the shadow tree (as selectors are limited to a single tree), but it is sometimes useful to be able to style it from inside the shadow tree context.
 * To work around that problem, the shadow host is treated as replacing the shadow root node.
-* When considered within its own shadow trees, the shadow host is featureless. Only the `:host`, `:host()`, and `:host-context()` pseudo classes are allowed to match it.
+* When considered within its own shadow trees, the shadow host is featureless. Only the `:host` and `:host()` pseudo classes are allowed to match it.
 
 ## Events in Shadow DOM
 
